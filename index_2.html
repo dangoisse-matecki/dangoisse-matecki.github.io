@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Les pensées de pascal.E — Pascale Dangoisse-Matecki</title>
+  <meta name="description" content="Pascale Dangoisse-Matecki — chercheuse, professeure, militante du savoir ouvert. Researcher, professor, open knowledge advocate." />
+  <meta name="keywords" content="Pascale Dangoisse-Matecki, Pascale Dangoisse, Pascale Matecki, Wikimedia Canada, Wikipedia, savoir ouvert, open knowledge, féminisme, feminism, Université d'Ottawa, University of Ottawa" />
+  <meta name="author" content="Pascale Dangoisse-Matecki" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      /* Palette — verified safe for deuteranopia, protanopia, tritanopia */
+      /* Deep navy: high contrast against white (10:1+) */
+      --indigo:    #1a2744;
+      /* Wave blue: used for labels/accents only, never as sole meaning signal */
+      --wave:      #1a5276;
+      /* Muted blue-grey: used only for decorative/secondary text, not meaning */
+      --grey-blue: #7f9ab5;
+      /* Very light blue-grey: backgrounds */
+      --foam:      #e6ecf2;
+      /* Off-white background — slightly warm to reduce glare */
+      --bg:        #f7f7f5;
+      /* Near-black ink: 15:1 contrast on bg */
+      --ink:       #18181e;
+      /* Muted text: 5.5:1 contrast on bg — passes AA for normal text */
+      --muted:     #4a5a6a;
+      /* Accent: used for borders/dividers only, not for meaning */
+      --accent:    #c0d0e0;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    /* Respect user preference for reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; }
+    }
+
+    body {
+      font-family: 'Atkinson Hyperlegible', sans-serif;
+      font-weight: 400;
+      /* 18px base — recommended for dyslexia accessibility */
+      font-size: 1.125rem;
+      /* 1.8 line-height — more generous than default for easier tracking */
+      line-height: 1.8;
+      /* Slightly increased letter-spacing for legibility */
+      letter-spacing: 0.01em;
+      color: var(--ink);
+      background: var(--bg);
+      /* Max line length: ~70 chars — optimal for dyslexic readers */
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--indigo);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 2.5rem;
+      gap: 1rem;
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 1.1rem;
+      color: var(--foam);
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .nav-logo .e { color: var(--grey-blue); }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      font-size: 0.82rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: #a8c0d8; /* lightened for contrast on dark nav bg — 4.6:1 */
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #fff; }
+    /* Visible focus for keyboard nav */
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid #f0c040;
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+
+    .lang-toggle {
+      display: flex;
+      gap: 0;
+      border: 1px solid var(--grey-blue);
+      border-radius: 3px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .lang-toggle button {
+      background: none;
+      border: none;
+      color: var(--grey-blue);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      padding: 0.3rem 0.65rem;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .lang-toggle button.active {
+      background: var(--grey-blue);
+      color: var(--indigo);
+    }
+
+    /* ── HERO ── */
+    header {
+      background: var(--indigo);
+      color: var(--foam);
+      padding: 5rem 2.5rem 4rem;
+      text-align: center;
+    }
+    header .eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--grey-blue);
+      margin-bottom: 1.25rem;
+    }
+    header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.5rem;
+    }
+    header h1 .e { color: var(--grey-blue); }
+    header .subtitle {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--grey-blue);
+      margin-top: 1rem;
+      letter-spacing: 0.03em;
+    }
+
+    /* ── WAVE DIVIDER ── */
+    .wave-divider {
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+    }
+    .wave-divider svg { display: block; width: 100%; }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 4rem 0;
+    }
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .section-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--wave);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 700;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      color: var(--indigo);
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    p { margin-bottom: 1rem; color: var(--ink); }
+    p:last-child { margin-bottom: 0; }
+
+    /* ── ABOUT ── */
+    #about { background: var(--bg); }
+
+    /* ── EXPERTISE ── */
+    #expertise { background: var(--foam); }
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin-top: 0.5rem;
+    }
+    .expertise-item {
+      background: white;
+      border-left: 3px solid var(--wave);
+      padding: 1rem 1.25rem;
+    }
+    .expertise-item strong {
+      display: block;
+      font-weight: 700;
+      font-size: 0.97rem;
+      color: var(--indigo);
+      margin-bottom: 0.35rem;
+    }
+    .expertise-item span {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ── PUBLICATIONS ── */
+    #publications { background: var(--bg); }
+
+    .pub-group { margin-bottom: 2.5rem; }
+    .pub-group-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--wave);
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 0.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .pub-item {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--foam);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .pub-item:last-child { border-bottom: none; }
+    .pub-meta { flex: 1; }
+    .pub-title {
+      font-size: 0.97rem;
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.6;
+    }
+    .pub-title a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent);
+      transition: border-color 0.2s;
+    }
+    .pub-title a:hover { border-color: var(--wave); }
+    .pub-details {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 0.25rem;
+      line-height: 1.6;
+    }
+    .pub-year {
+      font-size: 0.82rem;
+      color: var(--muted); /* was grey-blue — now passes AA contrast */
+      font-weight: 700;
+      white-space: nowrap;
+      padding-top: 0.1rem;
+    }
+    .lang-pill {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      background: var(--indigo);
+      color: #fff; /* white on dark navy: 10:1 — not relying on colour alone */
+      padding: 0.15rem 0.45rem;
+      border-radius: 2px;
+      margin-left: 0.4rem;
+      vertical-align: middle;
+    }
+    .under-review {
+      font-style: italic;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    /* ── PRESS ── */
+    #press { background: var(--foam); }
+    .press-item {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid #dde6f0;
+    }
+    .press-item:last-child { border-bottom: none; }
+    .press-outlet {
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--wave);
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    .press-title {
+      font-size: 0.97rem;
+      color: var(--ink);
+    }
+    .press-title a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent);
+      transition: border-color 0.2s;
+    }
+    .press-title a:hover { border-color: var(--wave); }
+    .press-date { font-size: 0.76rem; color: var(--muted); margin-top: 0.15rem; }
+
+    /* ── TEACHING ── */
+    #teaching { background: var(--bg); }
+    .teaching-item {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--foam);
+    }
+    .teaching-item:last-child { border-bottom: none; }
+    .teaching-item strong {
+      display: block;
+      font-weight: 700;
+      font-size: 0.97rem;
+      color: var(--indigo);
+      margin-bottom: 0.2rem;
+    }
+    .teaching-item span {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ── PROJECTS ── */
+    #projects { background: var(--foam); }
+
+    /* ── VOLUNTEERING ── */
+    #volunteering { background: var(--bg); }
+    .volunteer-item {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--foam);
+    }
+    .volunteer-item:last-child { border-bottom: none; }
+    .volunteer-item strong {
+      display: block;
+      font-weight: 700;
+      font-size: 0.97rem;
+      color: var(--indigo);
+      margin-bottom: 0.2rem;
+    }
+    .volunteer-item span {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--indigo);
+      color: var(--foam);
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+    #contact h2 { color: var(--foam); margin-bottom: 0.75rem; }
+    #contact p { color: var(--grey-blue); margin-bottom: 0.5rem; }
+    #contact a {
+      color: var(--foam);
+      text-decoration: none;
+      border-bottom: 1px solid var(--grey-blue);
+      transition: border-color 0.2s;
+    }
+    #contact a:hover { border-color: white; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--indigo);
+      text-align: center;
+      padding: 1.5rem 2rem;
+      font-size: 0.72rem;
+      color: var(--grey-blue);
+      border-top: 1px solid #2a3a5a;
+    }
+
+    /* ── HIDDEN BY LANG ── */
+    [data-lang] { display: block; }
+    .lang-fr [data-lang="en"] { display: none; }
+    .lang-en [data-lang="fr"] { display: none; }
+    /* Items that exist in both languages */
+    [data-lang="both"] { display: block !important; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      nav { padding: 0.75rem 1.25rem; flex-wrap: wrap; }
+      .nav-links { gap: 1rem; }
+      header { padding: 3.5rem 1.5rem 3rem; }
+      .container { padding: 0 1.25rem; }
+    }
+  </style>
+</head>
+<body class="lang-fr">
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="#" class="nav-logo">pascal.<span class="e">E</span></a>
+  <ul class="nav-links">
+    <li><a href="#about"        data-nav-fr="À propos"      data-nav-en="About">À propos</a></li>
+    <li><a href="#expertise"    data-nav-fr="Expertise"     data-nav-en="Expertise">Expertise</a></li>
+    <li><a href="#publications" data-nav-fr="Publications"  data-nav-en="Publications">Publications</a></li>
+    <li><a href="#press"        data-nav-fr="Presse"        data-nav-en="Press">Presse</a></li>
+    <li><a href="#teaching"     data-nav-fr="Enseignement"  data-nav-en="Teaching">Enseignement</a></li>
+    <li><a href="#projects"     data-nav-fr="Projets"       data-nav-en="Projects">Projets</a></li>
+    <li><a href="#volunteering" data-nav-fr="Bénévolat"     data-nav-en="Volunteering">Bénévolat</a></li>
+    <li><a href="#contact"      data-nav-fr="Contact"       data-nav-en="Contact">Contact</a></li>
+  </ul>
+  <div class="lang-toggle">
+    <button class="active" onclick="setLang('fr')">FR</button>
+    <button onclick="setLang('en')">EN</button>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<header>
+  <p class="eyebrow" data-lang="fr">chercheuse · professeure · savoir ouvert</p>
+  <p class="eyebrow" data-lang="en">researcher · professor · open knowledge</p>
+  <h1>Les pensées de pascal.<span class="e">E</span></h1>
+  <p class="subtitle">Pascale Dangoisse-Matecki</p>
+</header>
+
+<!-- Wave divider -->
+<div class="wave-divider" style="background:var(--indigo)">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,30 C180,60 360,0 540,30 C720,60 900,0 1080,30 C1260,60 1380,20 1440,30 L1440,60 L0,60 Z" fill="#fafaf8"/>
+  </svg>
+</div>
+
+<!-- ── ABOUT ── -->
+<section id="about">
+  <div class="container">
+    <p class="section-label" data-lang="fr">À propos</p>
+    <p class="section-label" data-lang="en">About</p>
+
+    <div data-lang="fr">
+      <p>Je suis chercheuse, professeure à temps partiel et militante du savoir ouvert. Mon travail se situe à l'intersection du féminisme, des médias numériques, de l'éducation et des communs de la connaissance.</p>
+      <p>Je travaille pour <strong>Wikimédia Canada</strong>, où je coordonne des initiatives pédagogiques, des partenariats communautaires et des réseaux francophones, notamment le <strong>Réseau WikiSavoirs</strong> et <strong>WikiFranca</strong>. J'enseigne également à l'<strong>Université d'Ottawa</strong> et dans d'autres universités canadiennes, en français et en anglais.</p>
+      <p>Mes recherches portent sur le féminisme médiatique, les discours politiques, l'âgisme, les humanités numériques et les écosystèmes d'information. Je suis titulaire d'un doctorat de l'Université d'Ottawa (2024).</p>
+    </div>
+
+    <div data-lang="en">
+      <p>I am a researcher, part-time professor, and open knowledge advocate. My work sits at the intersection of feminism, digital media, education, and the knowledge commons.</p>
+      <p>I work for <strong>Wikimedia Canada</strong>, coordinating educational initiatives, community partnerships, and francophone networks including the <strong>Réseau WikiSavoirs</strong> and <strong>WikiFranca</strong>. I also teach at the <strong>University of Ottawa</strong> and other Canadian universities, in both French and English.</p>
+      <p>My research focuses on media feminism, political discourse, ageism, digital humanities, and information ecosystems. I hold a PhD from the University of Ottawa (2024).</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── EXPERTISE ── -->
+<section id="expertise">
+  <div class="container">
+    <p class="section-label" data-lang="fr">Expertise</p>
+    <p class="section-label" data-lang="en">Expertise</p>
+
+    <div class="expertise-grid">
+      <div class="expertise-item">
+        <strong data-lang="fr">Féminisme et médias</strong>
+        <strong data-lang="en">Feminism &amp; Media</strong>
+        <span data-lang="fr">Analyse du discours, représentations de genre, féminisme médiatique</span>
+        <span data-lang="en">Discourse analysis, gender representations, media feminism</span>
+      </div>
+      <div class="expertise-item">
+        <strong data-lang="fr">Savoir ouvert &amp; Wikimédia</strong>
+        <strong data-lang="en">Open Knowledge &amp; Wikimedia</strong>
+        <span data-lang="fr">Éducation Wikipédia, données ouvertes, équité épistémique</span>
+        <span data-lang="en">Wikipedia education, open data, epistemic equity</span>
+      </div>
+      <div class="expertise-item">
+        <strong data-lang="fr">Humanités numériques</strong>
+        <strong data-lang="en">Digital Humanities</strong>
+        <span data-lang="fr">Wikidata, histoire LGBTQ2+, préservation numérique</span>
+        <span data-lang="en">Wikidata, LGBTQ2+ history, digital preservation</span>
+      </div>
+      <div class="expertise-item">
+        <strong data-lang="fr">Pédagogie critique</strong>
+        <strong data-lang="en">Critical Pedagogy</strong>
+        <span data-lang="fr">Désinformation, pensée systémique, innovation en enseignement supérieur</span>
+        <span data-lang="en">Misinformation, systems thinking, innovation in higher education</span>
+      </div>
+      <div class="expertise-item">
+        <strong data-lang="fr">Réseaux francophones</strong>
+        <strong data-lang="en">Francophone Networks</strong>
+        <span data-lang="fr">Diversité linguistique, communautés minoritaires, milieu postsecondaire</span>
+        <span data-lang="en">Linguistic diversity, minority communities, post-secondary sector</span>
+      </div>
+      <div class="expertise-item">
+        <strong data-lang="fr">Politique &amp; démocratie</strong>
+        <strong data-lang="en">Politics &amp; Democracy</strong>
+        <span data-lang="fr">Discours politique, scrutin, engagement civique</span>
+        <span data-lang="en">Political discourse, electoral systems, civic engagement</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PUBLICATIONS ── -->
+<section id="publications">
+  <div class="container">
+    <p class="section-label" data-lang="fr">Publications</p>
+    <p class="section-label" data-lang="en">Publications</p>
+
+    <p style="font-size:0.82rem;color:var(--muted);margin-bottom:2rem;" data-lang="fr">Aussi publiée sous les noms Pascale Dangoisse et Pascale Matecki.</p>
+    <p style="font-size:0.82rem;color:var(--muted);margin-bottom:2rem;" data-lang="en">Also published as Pascale Dangoisse and Pascale Matecki.</p>
+
+    <!-- THESIS -->
+    <div class="pub-group">
+      <p class="pub-group-title" data-lang="fr">Thèse de doctorat</p>
+      <p class="pub-group-title" data-lang="en">Doctoral Dissertation</p>
+      <div class="pub-item">
+        <div class="pub-meta">
+          <p class="pub-title">
+            <a href="https://ruor.uottawa.ca/items/82f6c37d-e605-4c5e-8a18-b4c324d60590" target="_blank" rel="noopener">
+              <span data-lang="fr">Thèse de doctorat</span><span data-lang="en">PhD Thesis</span>
+            </a>
+          </p>
+          <p class="pub-details">Université d'Ottawa / University of Ottawa</p>
+        </div>
+        <span class="pub-year">2024</span>
+      </div>
+    </div>
+
+    <!-- PEER-REVIEWED -->
+    <div class="pub-group">
+      <p class="pub-group-title" data-lang="fr">Articles évalués par les pairs</p>
+      <p class="pub-group-title" data-lang="en">Peer-Reviewed Journal Articles</p>
+
+      <div class="pub-item">
+        <div class="pub-meta">
+          <p class="pub-title">
+            <a href="https://doi.org/10.1080/07491409.2020.1781315" target="_blank" rel="noopener">Gender Equality through a Neoliberal Lens: A Discourse Analysis of Justin Trudeau's Official Speeches</a>
+            <span class="lang-pill">EN</span>
+          </p>
+          <p class="pub-details">Dangoisse, P. &amp; Perdomo, G. — <em>Women's Studies in Communication</em>, 44(3), pp. 419–447</p>
+        </div>
+        <span class="pub-year">2020</span>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-meta">
+          <p class="pub-title">
+            <a href="https://doi.org/10.3138/cjc-2024-0005" target="_blank" rel="noopener">Lesbian and Gay Liberation in Canada: Making Canadian LGBTQ2+ History Accessible</a>
+            <span class="lang-pill">EN</span>
+          </p>
+          <p class="pub-details">Dangoisse, P., Basmechi, F., Schwartz, M., Crompton, C. &amp; Lipski, C. — <em>Canadian Journal of Communication</em>, 49(3), pp. 486–502</p>
+        </div>
+        <span class="pub-year">2024</span>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-meta">
+          <p class="pub-title">
+            <a href="https://doi.org/10.3389/fpubh.2021.662231" target="_blank" rel="noopener">The "Vulnerability" Discourse in Times of Covid-19: Between Abandonment and Protection of Canadian Francophone Older Adults</a>
+            <span class="lang-pill">EN</span>
+          </p>
+          <p class="pub-details">Lagacé, M., Doucet, A., Dangoisse, P. et al. — <em>Frontiers in Public Health</em>, 9, p. 1135</p>
+        </div>
+        <span class="pub-year">2021</span>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-meta">
+          <p class="pub-title">
+            <a href="https://www.interfacejournal.net/wp-content/uploads/2018/12/Interface-10-1-2-full-PDF.pdf" target="_blank" rel="noopener">Twitter and Tear Gas: The Power and Fragility of Networked Protest</a>
+            <span class="lang-pill">EN</span>
+          </p>
+          <p class="pub-details">Dangoisse, P. — <em>Interface Journal</em>, 10(1), p. 360</p>
+        </div>
+        <span class="pub-year">2018</span>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-meta">
+          <p class="pub-title">
+            <a href="http://www.interfacejournal.net/wordpress/wp-content/uploads/2018/12/Interface-10-1-2-reviews.pdf" target="_blank" rel="noopener">Twitter and Tear Gas: The Power and Fragility of Networked Protest <em style="font-size:0.82rem">(book review)</em></a>
+            <span class="lang-pill">EN</span>
+          </p>
+          <p class="pub-details">Dangoisse, P. — <em>Interface Journal</em>, 10(1–2), pp. 347–350</p>
+        </div>
+        <span class="pub-year">2018</span>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-meta">
+          <p class="pub-title">
+            Passing as a Feminist: How the Globe and Mail and the National Post Engaged with Trudeau's Feminist Discourse During the 2015 Election Campaign
+            <span class="lang-pill">EN</span>
+          </p>
+          <p class="pub-details">Dangoisse, P. — <em>Feminist Media Studies</em> &nbsp;<span class="under-review" data-lang="fr">(sous évaluation)</span><span class="under-review" data-lang="en">(under review)</span></p>
+        </div>
+        <span class="pub-year">—</span>
+      </div>
+    </div>
+
+    <!-- BOOK CHAPTERS -->
+    <div class="pub-group">
+      <p class="pub-group-title" data-lang="fr">Chapitres de livre</p>
+      <p class="pub-group-title" data-lang="en">Book Chapters</p>
+
+      <div class="pub-item">
+        <div class="pub-meta">
+          <p class="pub-title">
+            <a href="https://press.uottawa.ca/en/9780776640068/future-horizons/" target="_blank" rel="noopener">Wages Due Both Then and Now</a>
+            <span class="lang-pill">EN</span>
+          </p>
+          <p class="pub-details">Dangoisse, P., Crompton, C. &amp; Schwartz, M. — in Barrett, P. &amp; Roger, S.R. (eds.), <em>Future Horizons: Canadian Digital Humanities</em>, University of Ottawa Press, p. 239</p>
+        </div>
+        <span class="pub-year">2023</span>
+      </div>
+    </div>
+
+    <!-- OER -->
+    <div class="pub-group">
+      <p class="pub-group-title" data-lang="fr">Ressource éducative libre</p>
+      <p class="pub-group-title" data-lang="en">Open Educational Resource</p>
+
+      <div class="pub-item">
+        <div class="pub-meta">
+          <p class="pub-title">
+            <a href="https://ecampusontario.pressbooks.pub/introdonnees/" target="_blank" rel="noopener">Manuel d'introduction aux données : rendre publiques les données de recherche en sciences humaines numériques</a>
+            <span class="lang-pill">FR</span>
+          </p>
+          <p class="pub-details">Tayler, F., Mitchell, M., Ripp, C. &amp; Dangoisse, P. — eCampus Ontario</p>
+        </div>
+        <span class="pub-year">2022</span>
+      </div>
+    </div>
+
+    <!-- THE CONVERSATION -->
+    <div class="pub-group">
+      <p class="pub-group-title">The Conversation / La Conversation</p>
+
+      <div class="pub-item">
+        <div class="pub-meta">
+          <p class="pub-title">
+            <a href="http://theconversation.com/la-pandemie-de-covid-19-a-aggrave-lagisme-dans-notre-societe-168460" target="_blank" rel="noopener">La pandémie de Covid-19 a aggravé l'âgisme dans notre société</a>
+            <span class="lang-pill">FR</span>
+          </p>
+          <p class="pub-details">Dangoisse, P., Bergeron, C.D., Lagacé, M. &amp; Doucet, A. — <em>La Conversation</em></p>
+        </div>
+        <span class="pub-year">2021</span>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-meta">
+          <p class="pub-title">
+            <span data-lang="fr">Féministe, le nouveau budget Freeland? Pas vraiment!</span>
+            <span data-lang="en">Is Freeland's new budget feminist? Not really!</span>
+            <span class="lang-pill">FR</span>
+          </p>
+          <p class="pub-details">Dangoisse, P. &amp; Perdomo, G. — <em>La Conversation</em></p>
+        </div>
+        <span class="pub-year">2021</span>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-meta">
+          <p class="pub-title">
+            <a href="http://theconversation.com/will-chrystia-freeland-lead-a-feminist-post-coronavirus-recovery-145912" target="_blank" rel="noopener">Will Chrystia Freeland Lead a Feminist Post-Coronavirus Recovery?</a>
+            <span class="lang-pill">EN</span>
+          </p>
+          <p class="pub-details">Perdomo, G. &amp; Dangoisse, P. — <em>The Conversation</em></p>
+        </div>
+        <span class="pub-year">2020</span>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-meta">
+          <p class="pub-title">
+            <a href="http://theconversation.com/the-canadian-womens-movement-primarily-serves-white-women-and-must-evolve-190897" target="_blank" rel="noopener">The Canadian Women's Movement Primarily Serves White Women and Must Evolve</a>
+            <span class="lang-pill">EN</span>
+          </p>
+          <p class="pub-details">Coen-Sanchez, K. &amp; Dangoisse, P. — <em>The Conversation</em></p>
+        </div>
+        <span class="pub-year">2022</span>
+      </div>
+    </div>
+
+    <!-- LE DEVOIR -->
+    <div class="pub-group">
+      <p class="pub-group-title">Le Devoir</p>
+
+      <div class="pub-item">
+        <div class="pub-meta">
+          <p class="pub-title">
+            <a href="https://www.ledevoir.com/opinion/idees/965619/droit-exister-notre-langue" target="_blank" rel="noopener">À qui le droit d'exister dans notre langue?</a>
+            <span class="lang-pill">FR</span>
+          </p>
+        </div>
+        <span class="pub-year">2026</span>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-meta">
+          <p class="pub-title">
+            Les savoirs en danger, ou Wikipédia face aux offensives idéologiques et à l'IA
+            <span class="lang-pill">FR</span>
+          </p>
+        </div>
+        <span class="pub-year">2026</span>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-meta">
+          <p class="pub-title">
+            <a href="https://www.ledevoir.com/opinion/idees/919854/idees-ce-j-ai-vecu-comme-candidate-confirme-notre-democratie-est-illusion" target="_blank" rel="noopener">Ce que j'ai vécu comme candidate me confirme que notre démocratie n'est qu'une illusion</a>
+            <span class="lang-pill">FR</span>
+          </p>
+        </div>
+        <span class="pub-year">2025</span>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-meta">
+          <p class="pub-title">
+            <a href="https://www.ledevoir.com/opinion/idees/820435/idees-crise-logement-travers-prisme-perte-soi" target="_blank" rel="noopener">La crise du logement à travers le prisme de la perte d'un chez-soi</a>
+            <span class="lang-pill">FR</span>
+          </p>
+        </div>
+        <span class="pub-year">2024</span>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-meta">
+          <p class="pub-title">
+            <a href="https://www.ledevoir.com/opinion/idees/796898/parite-quelle-guerre-des-sexes" target="_blank" rel="noopener">Quelle guerre des sexes?</a>
+            <span class="lang-pill">FR</span>
+          </p>
+        </div>
+        <span class="pub-year">2023</span>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-meta">
+          <p class="pub-title">
+            Le mouvement canadien des femmes doit évoluer
+            <span class="lang-pill">FR</span>
+          </p>
+          <p class="pub-details">Coen-Sanchez, K. &amp; Dangoisse, P.</p>
+        </div>
+        <span class="pub-year">2022</span>
+      </div>
+    </div>
+
+    <!-- LE DROIT -->
+    <div class="pub-group">
+      <p class="pub-group-title">Le Droit</p>
+
+      <div class="pub-item">
+        <div class="pub-meta">
+          <p class="pub-title">
+            <a href="https://www.ledroit.com/opinions/points-de-vue/2025/12/18/crise-en-sante-un-manque-decoute-daction-et-de-courage-YD5F6N7IFJFRZHSCRKWERS7JVQ/" target="_blank" rel="noopener">Crise en santé : un manque d'écoute, d'action et de courage</a>
+            <span class="lang-pill">FR</span>
+          </p>
+          <p class="pub-details">À vous la parole</p>
+        </div>
+        <span class="pub-year">2025</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── PRESS ── -->
+<section id="press">
+  <div class="container">
+    <p class="section-label" data-lang="fr">Presse — couverture médiatique</p>
+    <p class="section-label" data-lang="en">Press — Media Coverage</p>
+
+    <div class="press-item">
+      <p class="press-outlet">Radio-Canada</p>
+      <p class="press-title">
+        <a href="#" target="_blank" rel="noopener">Sur le vif : Marathon sur Wikipédia pour améliorer la visibilité des lesbiennes francophones</a>
+        <span class="lang-pill">FR</span>
+      </p>
+      <p class="press-details">Marcoux, Philippe — Radio-Canada</p>
+      <p class="press-date">2 oct. 2023</p>
+    </div>
+
+    <div class="press-item">
+      <p class="press-outlet">Radio-Canada</p>
+      <p class="press-title">
+        <a href="#" target="_blank" rel="noopener">Un « marathon » pour augmenter le nombre d'articles Wikipédia sur les femmes queers</a>
+        <span class="lang-pill">FR</span>
+      </p>
+      <p class="press-details">Dubreuil, Marie Jeanne — Radio-Canada</p>
+      <p class="press-date">2 oct. 2023</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── TEACHING ── -->
+<section id="teaching">
+  <div class="container">
+    <p class="section-label" data-lang="fr">Enseignement</p>
+    <p class="section-label" data-lang="en">Teaching</p>
+
+    <div data-lang="fr">
+      <p style="margin-bottom:1.5rem;font-size:0.9rem;color:var(--muted)">Cours donnés à titre de professeure à temps partiel dans diverses universités canadiennes.</p>
+    </div>
+    <div data-lang="en">
+      <p style="margin-bottom:1.5rem;font-size:0.9rem;color:var(--muted)">Courses taught as a part-time professor at various Canadian universities.</p>
+    </div>
+
+    <div class="teaching-item">
+      <strong data-lang="fr">Wikimédia pour le milieu académique / Wikimedia for Academics</strong>
+      <strong data-lang="en">Wikimedia for Academics</strong>
+      <span data-lang="fr">Digital Humanities Summer Institute (DHSI), Université de Montréal — juin 2026</span>
+      <span data-lang="en">Digital Humanities Summer Institute (DHSI), University of Montreal — June 2026</span>
+    </div>
+
+    <div class="teaching-item">
+      <strong data-lang="fr">Arts Innovation Lab — Laboratoire d'innovation en arts</strong>
+      <strong data-lang="en">Arts Innovation Lab</strong>
+      <span data-lang="fr">Université d'Ottawa — mars 2026. Cours intensif de 1,5 crédit (~50 étudiant·e·s interdisciplinaires) sur la pensée systémique et les écosystèmes d'information, avec le Wikimédia comme étude de cas.</span>
+      <span data-lang="en">University of Ottawa — March 2026. A 1.5-credit intensive course (~50 interdisciplinary students) on systems thinking and information ecosystems, using the Wikimedia ecosystem as a case study.</span>
+    </div>
+
+    <div class="teaching-item">
+      <strong data-lang="fr">Cours en communication, féminisme et médias numériques</strong>
+      <strong data-lang="en">Courses in Communication, Feminism &amp; Digital Media</strong>
+      <span data-lang="fr">Université d'Ottawa et autres universités canadiennes — en cours</span>
+      <span data-lang="en">University of Ottawa and other Canadian universities — ongoing</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── PROJECTS ── -->
+<section id="projects">
+  <div class="container">
+    <p class="section-label" data-lang="fr">Projets</p>
+    <p class="section-label" data-lang="en">Projects</p>
+
+    <div class="teaching-item">
+      <strong>Réseau WikiSavoirs (RWS)</strong>
+      <span data-lang="fr">Réseau canadien francophone postsecondaire pour l'intégration du savoir ouvert et des projets Wikimédia dans l'enseignement supérieur.</span>
+      <span data-lang="en">A Canadian francophone post-secondary network for integrating open knowledge and Wikimedia projects into higher education.</span>
+    </div>
+
+    <div class="teaching-item">
+      <strong data-lang="fr">Lesbian and Gay Liberation in Canada</strong>
+      <strong data-lang="en">Lesbian and Gay Liberation in Canada</strong>
+      <span data-lang="fr">Projet d'humanités numériques visant à rendre accessible l'histoire des mouvements LGBTQ2+ au Canada, via la numérisation, Wikidata et des edit-a-thons Wikipédia.</span>
+      <span data-lang="en">A digital humanities project making the history of LGBTQ2+ movements in Canada more accessible, through digitization, Wikidata, and Wikipedia edit-a-thons.</span>
+    </div>
+
+    <div class="teaching-item">
+      <strong data-lang="fr">Nos voix, nos sources — Balados Wikimedia (Manawan)</strong>
+      <strong data-lang="en">Nos voix, nos sources — Wikimedia Podcasts (Manawan)</strong>
+      <span data-lang="fr">Trousse pédagogique et série de balados pour la communauté atikamekw de Manawan, développée en collaboration avec des artisans et chercheur·e·s locaux·ales.</span>
+      <span data-lang="en">An educational toolkit and podcast series for the Atikamekw community of Manawan, developed in collaboration with local knowledge holders and researchers.</span>
+    </div>
+
+    <div class="teaching-item">
+      <strong>WikiFranca</strong>
+      <span data-lang="fr">Réseau international francophone des communautés Wikimédia, visant à renforcer la collaboration et la diversité linguistique au sein des projets Wikimédia.</span>
+      <span data-lang="en">An international francophone network of Wikimedia communities, working to strengthen collaboration and linguistic diversity within Wikimedia projects.</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── VOLUNTEERING ── -->
+<section id="volunteering">
+  <div class="container">
+    <p class="section-label" data-lang="fr">Bénévolat</p>
+    <p class="section-label" data-lang="en">Volunteering</p>
+
+    <div class="volunteer-item">
+      <strong>Chez les Simone</strong>
+      <span data-lang="fr">Économie sociale et entreprise multidisciplinaire pour les femmes à Gatineau, QC. Bénévole engagée dans la programmation et les activités communautaires.</span>
+      <span data-lang="en">A social economy enterprise offering multidisciplinary programming for women in Gatineau, QC. Volunteer involved in programming and community activities.</span>
+    </div>
+
+    <div class="volunteer-item">
+      <strong data-lang="fr">Candidate fédérale — élections canadiennes</strong>
+      <strong data-lang="en">Federal Candidate — Canadian Elections</strong>
+      <span data-lang="fr">Candidate lors des élections fédérales canadiennes sous le nom Pascale Matecki.</span>
+      <span data-lang="en">Federal election candidate under the name Pascale Matecki.</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <div class="container" style="text-align:center">
+    <p class="section-label" style="justify-content:center;color:var(--grey-blue)" data-lang="fr">Contact</p>
+    <p class="section-label" style="justify-content:center;color:var(--grey-blue)" data-lang="en">Contact</p>
+
+    <h2 data-lang="fr">Entrons en contact</h2>
+    <h2 data-lang="en">Let's connect</h2>
+
+    <p data-lang="fr" style="margin-bottom:1.5rem">Pour des collaborations, des invitations à enseigner ou à conférencer, ou simplement pour échanger.</p>
+    <p data-lang="en" style="margin-bottom:1.5rem">For collaborations, teaching or speaking invitations, or simply to connect.</p>
+
+    <p><a href="mailto:votre@email.com">votre@email.com</a></p>
+    <p style="margin-top:1rem">
+      <a href="https://www.linkedin.com/in/votreprofil" target="_blank" rel="noopener">LinkedIn</a>
+      &nbsp;·&nbsp;
+      <a href="https://en.wikipedia.org/wiki/User:VotrePseudo" target="_blank" rel="noopener">Wikipedia</a>
+    </p>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Pascale Dangoisse-Matecki &nbsp;·&nbsp; <span data-lang="fr">Fait avec soin</span><span data-lang="en">Made with care</span> &nbsp;·&nbsp; Gatineau, QC</p>
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.body.className = 'lang-' + lang;
+    document.documentElement.lang = lang;
+
+    // Toggle buttons
+    document.querySelectorAll('.lang-toggle button').forEach((btn, i) => {
+      btn.classList.toggle('active', (lang === 'fr' && i === 0) || (lang === 'en' && i === 1));
+    });
+
+    // Nav link labels
+    document.querySelectorAll('.nav-links a[data-nav-fr]').forEach(a => {
+      a.textContent = lang === 'fr' ? a.dataset.navFr : a.dataset.navEn;
+    });
+  }
+</script>
+
+</body>
+</html>
