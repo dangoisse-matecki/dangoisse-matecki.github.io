@@ -29,6 +29,8 @@
       --muted:     #4a5a6a;
       /* Accent: used for borders/dividers only, not for meaning */
       --accent:    #c0d0e0;
+        /* Purple accent for the "E" — 7.5:1 contrast against indigo */
+      --purple:    #C9A9FF;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -78,8 +80,7 @@
       text-decoration: none;
       white-space: nowrap;
     }
-    .nav-logo .e { color: var(--grey-blue); }
-
+.nav-logo .e { color: var(--purple); }
     .nav-links {
       display: flex;
       gap: 1.75rem;
@@ -149,7 +150,7 @@
       letter-spacing: -0.01em;
       margin-bottom: 0.5rem;
     }
-    header h1 .e { color: var(--grey-blue); }
+    header h1 .e { color: var(--purple); }
     header .subtitle {
       font-size: 0.9rem;
       font-weight: 300;
